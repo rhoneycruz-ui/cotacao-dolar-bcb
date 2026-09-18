@@ -1,0 +1,6 @@
+# Arquivos de dados coletados no dia a dia (mudam sempre, não precisam ir pro repositório)
+data/cotacao_dolar_20*.csv
+
+# Arquivos padrão do Python
+__pycache__/
+*.pyc
