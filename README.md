@@ -6,6 +6,10 @@ Dashboard interativo em Python que consulta a cotação de venda do dólar comer
 
 > A publicação no Streamlit Community Cloud será adicionada aqui após a integração da versão validada.
 
+![Dashboard interativo da cotação do dólar](docs/assets/dashboard.png)
+
+> Captura do modo demonstrativo, usado quando a API do Banco Central está temporariamente indisponível.
+
 ## O que o projeto entrega
 
 - consulta dos últimos 30, 90, 180 ou 365 registros da série SGS nº 1;

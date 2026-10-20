@@ -22,9 +22,9 @@ st.markdown(
     .stApp { color: #14231C; }
     .block-container { max-width: 1120px; padding-top: 3rem; padding-bottom: 4rem; }
     h1 { letter-spacing: -0.04em; font-weight: 680; }
-    .quote {
+    .stApp p.quote {
         color: #174A6E;
-        font-size: clamp(3.2rem, 9vw, 6.8rem);
+        font-size: clamp(3rem, 5vw, 4.5rem) !important;
         font-weight: 720;
         letter-spacing: -0.07em;
         line-height: .95;
@@ -37,6 +37,10 @@ st.markdown(
         font-variant-numeric: tabular-nums;
     }
     [data-testid="stMetricLabel"] { color: #40534A; }
+    [data-testid="stMetricValue"] {
+        font-size: clamp(1.2rem, 2vw, 1.55rem);
+        line-height: 1.15;
+    }
     button:focus-visible, [role="button"]:focus-visible, select:focus-visible {
         outline: 3px solid #174A6E !important;
         outline-offset: 3px;

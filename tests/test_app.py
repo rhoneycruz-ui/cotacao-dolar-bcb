@@ -118,3 +118,17 @@ def test_details_show_table_and_download_for_displayed_period():
     assert app.expander[0].label == "Ver dados do período"
     assert len(app.dataframe) == 1
     assert len(app.get("download_button")) == 1
+
+
+def test_metric_values_use_responsive_font_size():
+    source = APP_PATH.read_text(encoding="utf-8")
+
+    assert '[data-testid="stMetricValue"]' in source
+    assert "font-size: clamp(" in source
+
+
+def test_latest_quote_has_strong_streamlit_specificity():
+    source = APP_PATH.read_text(encoding="utf-8")
+
+    assert ".stApp p.quote" in source
+    assert "4.5rem) !important" in source
