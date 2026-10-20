@@ -1,41 +1,67 @@
-# Coleta Automática de Cotação do Dólar (API do Banco Central)
+# Cotação do Dólar — API do Banco Central
 
-Automação em Python que coleta a série histórica de cotação do dólar comercial direto na **API pública e oficial do Banco Central do Brasil (SGS)**, salva os dados em CSV e gera um gráfico de evolução.
+Pipeline em Python que coleta a cotação de venda do dólar comercial na API pública do Banco Central do Brasil, armazena os dados em CSV e gera estatísticas e visualizações.
 
-> **Nota:** o gráfico e o CSV de exemplo neste repositório (`data/exemplo_cotacao_dolar.csv`) usam **dados ilustrativos**, gerados só para demonstrar o resultado — não são cotações reais. Ao rodar `coleta.py` na sua máquina, os dados reais são baixados da API do BCB.
+## Fluxo
 
-## O que o projeto faz
+1. `coleta.py` consulta os últimos 90 registros da série SGS nº 1.
+2. As datas e os valores são normalizados com pandas.
+3. O resultado é salvo em `data/cotacao_dolar_AAAA-MM-DD.csv`.
+4. `analise.py` seleciona o CSV mais recente, calcula mínima, máxima e média e gera um gráfico em `images/cotacao_dolar.png`.
 
-1. `coleta.py` — conecta na API do BCB (série 1 do SGS = dólar comercial venda), baixa os últimos N dias de cotação e salva em `data/cotacao_dolar_AAAA-MM-DD.csv`
-2. `analise.py` — lê o CSV mais recente, calcula estatísticas básicas (mínima, máxima, média) e gera um gráfico de evolução em `images/cotacao_dolar.png`
+## Exemplo visual
 
-## Exemplo do resultado
+![Exemplo de gráfico da cotação do dólar](cotacao_dolar.png)
 
-![cotação exemplo](images/cotacao_dolar.png)
+> O gráfico acima e o arquivo [`exemplo_cotacao_dolar.csv`](exemplo_cotacao_dolar.csv) contêm dados ilustrativos usados somente para demonstrar o formato de saída. Eles não devem ser tratados como cotações oficiais ou atuais.
 
-## Como rodar
+## Como executar
+
+Requer Python 3.10 ou mais recente e acesso à internet para a etapa de coleta.
 
 ```bash
-pip install requests pandas matplotlib seaborn
-
-python coleta.py    # baixa os dados reais mais recentes
-python analise.py   # gera as estatísticas e o gráfico
+python -m venv .venv
 ```
 
-## Automatizando a coleta (rodar sozinho todo dia)
+No Windows:
 
-Para não precisar rodar manualmente, dá pra agendar o `coleta.py`:
+```powershell
+.venv\Scripts\python -m pip install -r requirements.txt
+New-Item -ItemType Directory -Force data, images
+.venv\Scripts\python coleta.py
+.venv\Scripts\python analise.py
+```
 
-- **Windows:** use o Agendador de Tarefas (Task Scheduler) para rodar `python coleta.py` no horário desejado
-- **Linux/Mac:** use um `cron job`
+No Linux ou macOS:
 
-## Tecnologias usadas
+```bash
+.venv/bin/python -m pip install -r requirements.txt
+mkdir -p data images
+.venv/bin/python coleta.py
+.venv/bin/python analise.py
+```
+
+## Saídas
+
+- `data/cotacao_dolar_AAAA-MM-DD.csv`: dados reais retornados pela API durante a execução.
+- `images/cotacao_dolar.png`: gráfico produzido a partir do CSV mais recente.
+- terminal: período analisado, cotação mínima, máxima, média e último valor coletado.
+
+## Automação
+
+O comando de coleta pode ser agendado no Agendador de Tarefas do Windows ou em um `cron job` no Linux e macOS. Em uma automação real, registre falhas de rede e só execute a análise depois de confirmar que o CSV foi gravado.
+
+## Tecnologias
 
 - Python
-- `requests` (consumo de API)
-- pandas (tratamento dos dados)
-- matplotlib / seaborn (visualização)
+- requests
+- pandas
+- matplotlib
+- seaborn
+- API REST do Banco Central do Brasil
 
-## Fonte dos dados
+## Fonte e limitações
 
-[API de Dados Abertos do Banco Central do Brasil — SGS](https://dadosabertos.bcb.gov.br/dataset/1-taxa-de-cambio-livre-dolar-americano-venda-diario) (série 1, dólar comercial venda)
+A fonte consultada é a [API de Dados Abertos do Banco Central do Brasil — série 1](https://dadosabertos.bcb.gov.br/dataset/1-taxa-de-cambio-livre-dolar-americano-venda-diario).
+
+O projeto depende da disponibilidade da API e não implementa persistência em banco de dados, retentativas automáticas, monitoramento ou alertas. Os dados coletados devem ser validados antes de qualquer uso financeiro.
