@@ -4,3 +4,7 @@ data/cotacao_dolar_20*.csv
 # Arquivos padrão do Python
 __pycache__/
 *.pyc
+.venv/
+.tmp/
+.superpowers/
+.pytest_cache/
