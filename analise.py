@@ -4,9 +4,13 @@ Autor: Rhoney
 """
 
 import glob
+from pathlib import Path
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+from src.metrics import calculate_metrics
 
 sns.set_theme(style="whitegrid")
 
@@ -28,17 +32,23 @@ def gerar_grafico(df):
     plt.ylabel("R$ por US$")
     plt.xticks(rotation=45)
     plt.tight_layout()
+    Path("images").mkdir(parents=True, exist_ok=True)
     plt.savefig("images/cotacao_dolar.png", dpi=150)
     plt.close()
 
 
-if __name__ == "__main__":
+def main():
     df = carregar_ultimo_csv()
+    metrics = calculate_metrics(df)
 
     print(f"Período: {df['data'].min().strftime('%d/%m/%Y')} a {df['data'].max().strftime('%d/%m/%Y')}")
-    print(f"Cotação mínima: R$ {df['cotacao_dolar'].min():.4f}")
-    print(f"Cotação máxima: R$ {df['cotacao_dolar'].max():.4f}")
-    print(f"Cotação média:  R$ {df['cotacao_dolar'].mean():.4f}")
+    print(f"Cotação mínima: R$ {metrics.minimum:.4f}")
+    print(f"Cotação máxima: R$ {metrics.maximum:.4f}")
+    print(f"Cotação média:  R$ {metrics.average:.4f}")
 
     gerar_grafico(df)
     print("\nGráfico salvo em images/cotacao_dolar.png")
+
+
+if __name__ == "__main__":
+    main()
