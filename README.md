@@ -1,10 +1,11 @@
 # Cotação do Dólar — Dashboard BCB
 
 [![Tests](https://github.com/rhoneycruz-ui/cotacao-dolar-bcb/actions/workflows/tests.yml/badge.svg)](https://github.com/rhoneycruz-ui/cotacao-dolar-bcb/actions/workflows/tests.yml)
+[![Abrir dashboard](https://img.shields.io/badge/abrir-dashboard-FF4B4B?logo=streamlit&logoColor=white)](https://cotacao-dolar-bcb.streamlit.app/)
 
 Dashboard interativo em Python que consulta a cotação de venda do dólar comercial na API pública do Banco Central do Brasil, apresenta métricas objetivas e permite exportar o período selecionado em CSV.
 
-> A publicação no Streamlit Community Cloud será adicionada aqui após a integração da versão validada.
+**[Acessar o dashboard publicado](https://cotacao-dolar-bcb.streamlit.app/)**
 
 ![Dashboard interativo da cotação do dólar](docs/assets/dashboard.png)
 
