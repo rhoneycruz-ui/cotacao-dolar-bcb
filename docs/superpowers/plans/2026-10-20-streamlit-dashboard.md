@@ -51,7 +51,7 @@ Criar testes `test_normalize_records_returns_canonical_frame`, `test_normalize_r
 
 - [ ] **Step 2: Executar os testes válidos e confirmar RED**
 
-Run: `python -m pytest tests/test_bcb.py -k "canonical or comma or duplicate" -v`  
+Run: `python -m pytest tests/test_bcb.py -k "canonical or comma or duplicate" -v`
 Expected: FAIL por ausência de `src.bcb`.
 
 - [ ] **Step 3: Implementar a normalização mínima**
@@ -60,7 +60,7 @@ Em `src/bcb.py`, criar `BCBDataError(ValueError)` e `normalize_records(records)`
 
 - [ ] **Step 4: Executar os testes válidos e confirmar GREEN**
 
-Run: `python -m pytest tests/test_bcb.py -k "canonical or comma or duplicate" -v`  
+Run: `python -m pytest tests/test_bcb.py -k "canonical or comma or duplicate" -v`
 Expected: 3 passed.
 
 - [ ] **Step 5: Escrever testes RED de dados inválidos**
@@ -69,7 +69,7 @@ Adicionar casos parametrizados para lista vazia, campos ausentes, data inválida
 
 - [ ] **Step 6: Executar os testes inválidos e confirmar RED**
 
-Run: `python -m pytest tests/test_bcb.py -k "rejects" -v`  
+Run: `python -m pytest tests/test_bcb.py -k "rejects" -v`
 Expected: FAIL nos casos ainda aceitos.
 
 - [ ] **Step 7: Completar a validação mínima**
@@ -78,7 +78,7 @@ Validar existência dos campos, conversões, finitude e positividade sem corrigi
 
 - [ ] **Step 8: Executar a suíte de normalização**
 
-Run: `python -m pytest tests/test_bcb.py -v`  
+Run: `python -m pytest tests/test_bcb.py -v`
 Expected: todos os testes existentes de normalização passam.
 
 - [ ] **Step 9: Escrever testes RED do cliente HTTP**
@@ -95,7 +95,7 @@ Definir `BCB_URL = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados"`; `fe
 
 - [ ] **Step 12: Executar a Task 1**
 
-Run: `python -m pytest tests/test_bcb.py -v`  
+Run: `python -m pytest tests/test_bcb.py -v`
 Expected: 0 failed.
 
 - [ ] **Step 13: Commit**
@@ -123,7 +123,7 @@ Criar `test_calculate_metrics_for_known_series` com cotações `[5.0, 5.5, 6.0]`
 
 - [ ] **Step 2: Confirmar RED**
 
-Run: `python -m pytest tests/test_metrics.py -v`  
+Run: `python -m pytest tests/test_metrics.py -v`
 Expected: FAIL por ausência de `src.metrics`.
 
 - [ ] **Step 3: Implementar indicadores**
@@ -136,7 +136,7 @@ Adicionar `test_calculate_metrics_single_record_has_no_change` e `test_calculate
 
 - [ ] **Step 5: Confirmar GREEN de métricas**
 
-Run: `python -m pytest tests/test_metrics.py -v`  
+Run: `python -m pytest tests/test_metrics.py -v`
 Expected: 0 failed.
 
 - [ ] **Step 6: Escrever teste RED da exportação**
@@ -149,7 +149,7 @@ Criar `to_csv_bytes` que ordena por data, formata datas como `%Y-%m-%d`, preserv
 
 - [ ] **Step 8: Confirmar GREEN da Task 2**
 
-Run: `python -m pytest tests/test_metrics.py tests/test_export.py -v`  
+Run: `python -m pytest tests/test_metrics.py tests/test_export.py -v`
 Expected: 0 failed.
 
 - [ ] **Step 9: Commit**
@@ -178,7 +178,7 @@ Com `streamlit.testing.v1.AppTest`, criar `test_app_renders_real_data_without_de
 
 - [ ] **Step 2: Confirmar RED**
 
-Run: `python -m pytest tests/test_app.py::test_app_renders_real_data_without_demo_banner -v`  
+Run: `python -m pytest tests/test_app.py::test_app_renders_real_data_without_demo_banner -v`
 Expected: FAIL por ausência de `app.py`.
 
 - [ ] **Step 3: Implementar o esqueleto funcional**
@@ -187,7 +187,7 @@ Em `app.py`, configurar a página, seletor de período, função `@st.cache_data
 
 - [ ] **Step 4: Confirmar GREEN inicial**
 
-Run: `python -m pytest tests/test_app.py::test_app_renders_real_data_without_demo_banner -v`  
+Run: `python -m pytest tests/test_app.py::test_app_renders_real_data_without_demo_banner -v`
 Expected: PASS.
 
 - [ ] **Step 5: Escrever teste RED da falha sem fallback automático**
@@ -216,12 +216,12 @@ Configurar cores base em `.streamlit/config.toml` e CSS mínimo no app para larg
 
 - [ ] **Step 11: Confirmar GREEN da Task 3**
 
-Run: `python -m pytest tests/test_app.py -v`  
+Run: `python -m pytest tests/test_app.py -v`
 Expected: 0 failed e nenhum acesso real à rede.
 
 - [ ] **Step 12: Smoke test de importação**
 
-Run: `python -c "import app"`  
+Run: `python -c "import app"`
 Expected: exit 0 sem traceback.
 
 - [ ] **Step 13: Commit**
@@ -248,7 +248,7 @@ Criar testes que fixam: `coleta.coletar_cotacao(dias=90)` retorna o contrato can
 
 - [ ] **Step 2: Executar e registrar a linha de base**
 
-Run: `python -m pytest tests/test_legacy_scripts.py -v`  
+Run: `python -m pytest tests/test_legacy_scripts.py -v`
 Expected: os testes de caracterização compatíveis passam; qualquer lacuna de injeção necessária falha de forma identificada antes da refatoração.
 
 - [ ] **Step 3: Refatorar `coleta.py` minimamente**
@@ -261,12 +261,12 @@ Usar `calculate_metrics` para o resumo, manter `carregar_ultimo_csv` e `gerar_gr
 
 - [ ] **Step 5: Confirmar compatibilidade**
 
-Run: `python -m pytest tests/test_legacy_scripts.py -v`  
+Run: `python -m pytest tests/test_legacy_scripts.py -v`
 Expected: 0 failed.
 
 - [ ] **Step 6: Rodar toda a suíte**
 
-Run: `python -m pytest -v`  
+Run: `python -m pytest -v`
 Expected: 0 failed.
 
 - [ ] **Step 7: Commit**
@@ -292,7 +292,7 @@ Configurar GitHub Actions para Python 3.10 e 3.12, instalar `requirements.txt` e
 
 - [ ] **Step 2: Validar estruturalmente o workflow**
 
-Run: `python -c "import yaml; yaml.safe_load(open('.github/workflows/tests.yml', encoding='utf-8'))"`  
+Run: `python -c "import yaml; yaml.safe_load(open('.github/workflows/tests.yml', encoding='utf-8'))"`
 Expected: exit 0. Adicionar `PyYAML` somente às dependências de desenvolvimento se o validador for mantido como teste do projeto.
 
 - [ ] **Step 3: Atualizar o README**
@@ -301,10 +301,10 @@ Documentar link reservado para a aplicação, screenshot a ser capturado após o
 
 - [ ] **Step 4: Verificar comandos documentados**
 
-Run: `python -m pytest -v`  
+Run: `python -m pytest -v`
 Expected: 0 failed.
 
-Run: `python -m streamlit run app.py --server.headless true --server.port 8501`  
+Run: `python -m streamlit run app.py --server.headless true --server.port 8501`
 Expected: servidor inicia sem traceback; encerrar após o health check local.
 
 - [ ] **Step 5: Commit**
@@ -326,10 +326,10 @@ git commit -m "ci: test dashboard and document usage"
 
 - [ ] **Step 1: Verificação local final**
 
-Run: `python -m pytest -v`  
+Run: `python -m pytest -v`
 Expected: 0 failed.
 
-Run: `python -c "from src.bcb import fetch_quotes; df=fetch_quotes(30); print(len(df), df.columns.tolist())"`  
+Run: `python -c "from src.bcb import fetch_quotes; df=fetch_quotes(30); print(len(df), df.columns.tolist())"`
 Expected: `30 ['data', 'cotacao_dolar']` com uma única chamada real controlada ao BCB.
 
 - [ ] **Step 2: Revisão visual local**

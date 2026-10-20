@@ -1,8 +1,8 @@
 # Dashboard Público da Cotação do Dólar — Design
 
-**Data:** 2026-10-20  
-**Status:** aprovado conceitualmente; aguardando revisão desta especificação  
-**Repositório:** `rhoneycruz-ui/cotacao-dolar-bcb`  
+**Data:** 2026-10-20
+**Status:** aprovado para implementação
+**Repositório:** `rhoneycruz-ui/cotacao-dolar-bcb`
 **Branch:** `codex/streamlit-dashboard`
 
 ## 1. Objetivo
